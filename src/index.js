@@ -5,7 +5,24 @@ dotenv.config({
     path: './env'
 })
 
-connectDB()
+const port = process.env.PORT || 8000
+
+// We use async/awit that in connectDB method and when async/await method completed then it return Promise.
+connectDB() 
+    .then(() => {
+        app.on("error", (error) => {
+            console.log("ERROR ON:", error);
+            throw error
+        })
+
+        app.listen(port, () => {
+            console.log(`Server is running at port ${port}`);
+        })
+    })
+    .catch((error) => {
+        console.log("MONGODB connection failed || ", error);
+    })
+
 
 
 
