@@ -10,7 +10,7 @@ app.use(cors({
     credentials: true
 }))
 
-// Isse pahile body parser use karna padta tha.
+// Isse pahile body parser use karna padta thae.
 // Some Page send data in following format: 
     //  - JSON 
     //  - req body mai bhejege forms se

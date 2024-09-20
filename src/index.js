@@ -59,7 +59,7 @@ connectDB()
 
 // Second approach
 // ; is for cleaning perpose 
-// Database se connect karne ke pahile try catch, promises,
+// Database se connect karne ke pahile try catch, promises, bcz database is in another continent
 ;(async () => {
     try {
         await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
