@@ -22,7 +22,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   // forms => req.body()
   const { fullName, email, username, password } = req.body;
-  console.log('email: ', email);
+  // console.log('email: ', email);
 
   /* // Most beginners done this
     if (fullName === "") {
@@ -48,9 +48,13 @@ const registerUser = asyncHandler(async (req, res) => {
   // middleware kya karta hai ki req ke aandhar oor jadha field add karta hai.
   // Ass: req.files ko console.log karo 
   const avatarLocalPath = req.files?.avatar[0]?.path
-  const coverImageLocalPath = req.files?.coverImage[0]?.path
+  // const coverImageLocalPath = req.files?.coverImage[0]?.path
+  // console.log(avatarLocalPath, coverImageLocalPath);
 
-  console.log(avatarLocalPath, coverImageLocalPath);
+  let coverImageLocalPath;
+  if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
+      coverImageLocalPath = req.files.coverImage[0].path
+  }
   
   // for multer
   if (!avatarLocalPath) {
