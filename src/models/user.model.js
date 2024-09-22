@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import jwt, { sign } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 const userSchema = new Schema(
@@ -55,7 +55,7 @@ const userSchema = new Schema(
 // do not use array function bcz it does not have this ka reference nahi hota hai or context pata nahi hota hai.
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-  this.password = bcrypt.hash(this.password, 10); // 10 is rounds.
+  this.password = await bcrypt.hash(this.password, 10); // 10 is rounds.
   next();
 });
 

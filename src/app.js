@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors"
 import cookieParser from "cookie-parser"; 
 
-const app = express()
+const app = express();
 
 // Read documentation for feature.
 app.use(cors({
@@ -32,5 +32,16 @@ app.use(express.static("public"))
 
 // We can perform CRUD operations securely.
 app.use(cookieParser())
+
+
+
+// Routes import for user
+import userRouter from "./routes/user.routes.js"
+
+
+// routes declaration
+// This is Prefix http://localhost:8000/api/v1//users/register
+// This is Prefix http://localhost:8000/api/v1//users/login
+app.use("/api/v1/users", userRouter)
 
 export { app }
